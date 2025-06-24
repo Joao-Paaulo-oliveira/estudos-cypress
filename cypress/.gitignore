@@ -1,0 +1,14 @@
+
+# Ignora dependências
+node_modules/
+
+# Ignora arquivos de log
+*.log
+
+# Ignora relatórios do Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Ignora sistema operacional
+.DS_Store
+Thumbs.db
