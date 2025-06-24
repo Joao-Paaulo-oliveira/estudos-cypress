@@ -12,18 +12,6 @@ O objetivo principal deste repositório é servir como um diário de bordo dos m
 
 O projeto está em sua fase inicial. Os arquivos de configuração básicos do Cypress foram adicionados e a estrutura de pastas está pronta para receber os primeiros arquivos de teste (`specs`).
 
-##  Estrutura de Arquivos
-
-A estrutura inicial do projeto contém os seguintes arquivos e diretórios:
-
-/
-├── cypress/                # Pasta principal que conterá os testes, fixtures, etc.
-├── .gitignore              # Arquivo para ignorar arquivos e pastas (ex: node_modules).
-├── cypress.config.js       # Arquivo de configuração principal do Cypress.
-├── package.json            # Define as dependências e scripts do projeto.
-├── package-lock.json       # Registra a versão exata de cada dependência instalada.
-└── README.md
-
 
 ##  Como Começar
 
