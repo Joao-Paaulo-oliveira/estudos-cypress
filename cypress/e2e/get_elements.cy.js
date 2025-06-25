@@ -1,10 +1,10 @@
 
 
 // Define o grupo de testes com o nome "Login"
-describe('Login', () => {
+describe('Get Elements', () => {
   
   // Caso de teste: verifica o login com sucesso
-  it('Login com sucesso', () => {
+  it('Usando o get()', () => {
 
     // Visita a URL base definida no cypress.config.js 
     cy.visit('/')
