@@ -1,13 +1,10 @@
 /// <reference types="cypress" />
 
+const user_data = require('../fixtures/deafio.json');
+
 describe('Cadastro de Usuario', () => {
 
-    const user_name = 'João Paulo';
-    const user_email = 'joao.ppaulo@qa.com.br';
-    const user_password = '123456';
-
-
-
+ 
 
   it('Validar campo de nome vazio', () => {
     // Acessar a página inicial
@@ -35,7 +32,7 @@ describe('Cadastro de Usuario', () => {
 
       .get('#user') // Verifica se o campo de usuário está visível
       .should('be.visible') // Verifica se o campo de usuário está visível
-      .type(user_name); // Digita o nome de usuário no campo
+      .type(user_data.name); // Digita o nome de usuário no campo
 
     cy.get('#email') // Verifica se o campo de e-mail está visível
       .should('be.visible') // Verifica se o campo de e-mail está visível
@@ -57,16 +54,16 @@ describe('Cadastro de Usuario', () => {
 
       .get('#user') // Verifica se o campo de usuário está visível
       .should('be.visible') // Verifica se o campo de usuário está visível
-      .type(user_name); // Digita o nome de usuário no campo
+      .type(user_data.name); // Digita o nome de usuário no campo
 
     cy.get('#email') // Verifica se o campo de e-mail está visível
       .should('be.visible') // Verifica se o campo de e-mail está visível
-      .type(user_email); // Limpa o campo de e-mail para simular um campo vazio
+      .type(' '); // Limpa o campo de e-mail para simular um campo vazio
 
     cy.get('#btnRegister') // Verifica se o botão de cadastro está visível
       .click(); // Clica no botão de registro
 
-    cy.get('#errorMessageFirstName') // Verifica se o rótulo de erro do campo de e-mail está visível
+    cy.get('.errorLabel') // Verifica se o rótulo de erro do campo de e-mail está visível
       .should('have.text', 'O campo e-mail deve ser prenchido corretamente'); // Verifica se o texto do rótulo de erro é o esperado
   });
 
@@ -79,11 +76,11 @@ describe('Cadastro de Usuario', () => {
 
       .get('#user') // Verifica se o campo de usuário está visível
       .should('be.visible') // Verifica se o campo de usuário está visível
-      .type(user_name); // Digita o nome de usuário no campo
+      .type(user_data.name); // Digita o nome de usuário no campo
 
     cy.get('#email') // Verifica se o campo de e-mail está visível
       .should('be.visible') // Verifica se o campo de e-mail está visível
-      .type(user_email); // Limpa o campo de e-mail para simular um campo vazio
+      .type(user_data.email); // Limpa o campo de e-mail para simular um campo vazio
 
     cy.get('#password').should('be.visible').type(' '); // Limpa o campo de senha para simular um campo vazio
 
@@ -105,11 +102,11 @@ it('Campo senha invalido', () => {
 
       .get('#user') // Verifica se o campo de usuário está visível
       .should('be.visible') // Verifica se o campo de usuário está visível
-      .type(user_name); // Digita o nome de usuário no campo
+      .type(user_data.name); // Digita o nome de usuário no campo
 
     cy.get('#email') // Verifica se o campo de e-mail está visível
       .should('be.visible') // Verifica se o campo de e-mail está visível
-      .type(user_email); // Limpa o campo de e-mail para simular um campo vazio
+      .type(user_data.email); // Limpa o campo de e-mail para simular um campo vazio
 
     cy.get('#password').should('be.visible').type('1234'); // digita uma senha inválida (menos de 6 dígitos)
 
@@ -121,7 +118,7 @@ it('Campo senha invalido', () => {
   );
 });
 
-it.only('Cadastro realizado com sucesso', () => {
+it('Cadastro realizado com sucesso', () => {
   cy.visit('/');
     cy.visit('/');
 
@@ -131,15 +128,15 @@ it.only('Cadastro realizado com sucesso', () => {
 
       .get('#user') // Verifica se o campo de usuário está visível
       .should('be.visible') // Verifica se o campo de usuário está visível
-      .type(user_name); // Digita o nome de usuário no campo
+      .type(user_data.name); // Digita o nome de usuário no campo
 
     cy.get('#email') // Verifica se o campo de e-mail está visível
       .should('be.visible') // Verifica se o campo de e-mail está visível
-      .type(user_email); // Limpa o campo de e-mail para simular um campo vazio
+      .type(user_data.email); // Limpa o campo de e-mail para simular um campo vazio
 
     cy.get('#password')
     .should('be.visible')
-    .type(user_password); // digita uma senha válida (6 dígitos)
+    .type(user_data.password); // digita uma senha válida (6 dígitos)
 
     cy.get('#btnRegister') // Verifica se o botão de cadastro está visível
       .click(); // Clica no botão de registro
