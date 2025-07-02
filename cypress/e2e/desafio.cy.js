@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import { faker } from '@faker-js/faker';
 const user_data = require('../fixtures/deafio.json');
 
 describe('Cadastro de Usuario', () => {
@@ -118,9 +119,10 @@ it('Campo senha invalido', () => {
   );
 });
 
-it('Cadastro realizado com sucesso', () => {
+it.only('Cadastro realizado com sucesso', () => {
   cy.visit('/');
-    cy.visit('/');
+   
+  const name = faker.person.fullName()
 
     cy.get('.header-logo') // Verifica se o logo está visível
       .get('.fa-lock') // Verifica se o ícone de bloqueio está visível
@@ -128,11 +130,11 @@ it('Cadastro realizado com sucesso', () => {
 
       .get('#user') // Verifica se o campo de usuário está visível
       .should('be.visible') // Verifica se o campo de usuário está visível
-      .type(user_data.name); // Digita o nome de usuário no campo
+      .type(name); // Digita o nome de usuário no campo
 
     cy.get('#email') // Verifica se o campo de e-mail está visível
       .should('be.visible') // Verifica se o campo de e-mail está visível
-      .type(user_data.email); // Limpa o campo de e-mail para simular um campo vazio
+      .type(faker.internet.email()); // Limpa o campo de e-mail para simular um campo vazio
 
     cy.get('#password')
     .should('be.visible')
